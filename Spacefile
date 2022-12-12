@@ -1,0 +1,18 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+app_name: Weather
+icon: app/public/logo512.png
+micros:
+  - name: app
+    src: app
+    engine: react
+    primary: true
+
+  - name: api
+    src: api
+    engine: nodejs16
+    run: node index.js
+    presets:
+      env:
+        - name: OPEN_WEATHER_MAP_API_KEY
+          description: OpenWeathermap API Key

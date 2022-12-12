@@ -1,8 +1,7 @@
 import axios from "axios";
-import config from "../config/config";
 
 async function getCityCoords(city) {
-  const response = await axios.get(`${config.WEATHER_API_ENDPOINT}q=${city}`);
+  const response = await axios.get(`/api/weather?q=${city}`);
   const {
     coord,
     sys: { country },
@@ -12,7 +11,7 @@ async function getCityCoords(city) {
 
 async function getCityName(lon, lat) {
   const response = await axios.get(
-    `${config.WEATHER_API_ENDPOINT}lon=${lon}&lat=${lat}`
+    `/api/weather?lon=${lon}&lat=${lat}`
   );
   const {
     name,
@@ -23,7 +22,7 @@ async function getCityName(lon, lat) {
 
 async function getWeather(lon, lat) {
   const response = await axios.get(
-    `${config.WEATHER_DATA_ENDPOINT}lon=${lon}&lat=${lat}`
+    `/api/weather/data?lon=${lon}&lat=${lat}`
   );
   return response.data;
 }
